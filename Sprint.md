@@ -2,7 +2,7 @@
 
 ## COMPONENTS
 
-## Page1: Home
+### Page1: Home
 - [ ] Header
     - [ ] Menu
         * Home, New, Comments, Ask, Show, Jobs
@@ -11,12 +11,12 @@
     - [ ] Post Items
         * Title, Url, Points, Author, Created, Link to comments detail
 
-## Page2: Comments Detail
+### Page2: Comments Detail
 - [ ] Comments Container
     - [ ] Comments Items
         * Author, Created, Text
 
-## Pagination
+### Pagination
 - [ ] Pagination 30 by limit
 
 
