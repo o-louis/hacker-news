@@ -1,9 +1,11 @@
-# COMPONENTS
+# Hacker News
 
-## Page1: HOME
+## COMPONENTS
+
+## Page1: Home
 - [ ] Header
     - [ ] Menu
-        * Home, New, Past, Comments, Ask, Show, Jobs
+        * Home, New, Comments, Ask, Show, Jobs
 
 - [ ] Post Container
     - [ ] Post Items
@@ -19,7 +21,7 @@
 
 
 
-# REQUESTS
+## REQUESTS
 
 ### Home
 > https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty
