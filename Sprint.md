@@ -1,5 +1,7 @@
 # Hacker News
 
+![Hacker New](./src/assets/HackerNew-v2.png "Hacker New")
+
 ## COMPONENTS
 
 ### Page1: Home
@@ -47,3 +49,6 @@
 
 ### Comment detail
 > https://hacker-news.firebaseio.com/v0/item/:id.json?print=pretty
+
+### Search
+> https://hn.algolia.com/api/v1/search?query=:query&hitsPerPage=30
