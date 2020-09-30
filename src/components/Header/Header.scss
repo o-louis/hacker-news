@@ -1,0 +1,85 @@
+$orange: #FF6600;
+$black: #000000;
+$grey: #9B9B9B;
+$white: #FFFFFF;
+
+$background-header: $black;
+$logo-color: $orange;
+$menu-section: $grey;
+$header-text: $white;
+$hover-menu: $white;
+
+header {
+    width: 100%;
+    padding: 1em;
+    color: $header-text;
+    position: fixed;
+    background-color: $background-header;
+
+    /*======================================
+                    LOGO
+    =======================================*/
+    .logo-container {
+        display: flex;
+        align-items: center;
+    
+        &__icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 3px 8px;
+            border: 2px solid $logo-color;
+            font-size: 2em;
+            color: $logo-color;
+            font-weight: 900;
+        }
+    
+        &__title {
+            color: $logo-color;
+            margin-left: 8px;
+        }
+    }
+    
+
+    /*======================================
+                    NAV
+    =======================================*/
+    nav {
+        display: flex;
+        flex-direction: column;
+        color: $menu-section;
+        display: grid;
+        grid-template-columns: 1fr;
+        .menu {
+            margin-top: 10px;
+            display: grid;
+            width: 100%;
+            grid-template-columns: repeat(6, auto);
+            text-align: center;
+            &__section {
+                font-size: 1.7em;
+                font-weight: 500;
+    
+                &.selected {
+                    color: $hover-menu;
+                }
+    
+                &:first-child {
+                    padding-left: 0;
+                }
+            }
+        }
+    
+        input {
+            margin: 0 auto;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            align-self: center;
+            border: none;
+            border-radius: 30px;
+            padding: 4px 0px 4px 10px;
+            outline: none;
+            font-size: 1.7em;
+        }
+    }
+}

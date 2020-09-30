@@ -5,11 +5,11 @@
 ## COMPONENTS
 
 ### Page1: Home
-- [ ] Header
-    - [ ] Menu
+- [X] Header
+    - [X] Menu
         * Home, New, Comments, Ask, Show, Jobs
 
-- [ ] Post Container
+- [X] Post Container
     - [ ] Post Items
         * Title, Url, Points, Author, Created, Link to comments detail
 
