@@ -14,8 +14,8 @@
         * Title, Url, Points, Author, Created, Link to comments detail
 
 ### Page2: Comments Detail
-- [ ] Comments Container
-    - [ ] Comments Items
+- [X] Comments Container
+    - [x] Comments Items
         * Author, Created, Text
 
 ### Pagination

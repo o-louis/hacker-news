@@ -13,10 +13,10 @@
         <!-- Nav -->
         <nav>
             <ul class="menu" >
-                <li class="menu__section"
+                <li :class="[index === currentIndex ? 'menu__section selected' : 'menu__section']"
                     v-for="(item, index) in sections"
                     :key="index" @click="changeSection(index)">
-                    {{item.section}}
+                    <router-link to="/"> {{item.section}} </router-link>
                 </li>
             </ul>
             <input type="text" placeholder="Search..." />

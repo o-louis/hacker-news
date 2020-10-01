@@ -16,8 +16,6 @@ $text-important: $black;
         width: 100%;
         padding: 15px 3px;
         display: grid;
-        // grid-template-columns: 1fr 10fr;
-        // grid-template-columns: 10% 85%;
         grid-template-columns: 40px 1fr;
         -webkit-box-shadow: 0 8px 6px -6px rgba(0,0,0,0.12);
         -moz-box-shadow: 0 8px 6px -6px rgba(0,0,0,0.12);
@@ -49,6 +47,11 @@ $text-important: $black;
         display: flex;
         flex-wrap: wrap;
 
+        a {
+            &:hover {
+                text-decoration: underline;
+            }   
+        }
         &:nth-child(2) {
             margin-top: 3px;
             & > * {
@@ -62,6 +65,7 @@ $text-important: $black;
         font-size: 1.8em;
         color: $text-important;
         font-weight: bold;
+        cursor: pointer;
     }
     &__link {
         color: $text-color;

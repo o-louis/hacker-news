@@ -7,7 +7,7 @@
                 <div class="posts-container__row">
                     <a :href="item.url" target="__blank" class="posts-container__title">
                         {{item.title}}
-                        <span class="posts-container__link" >({{getBaseUrlLink(item.url)}})</span>
+                        <span class="posts-container__link" v-if="item.url">({{getBaseUrlLink(item.url)}})</span>
                     </a>
                 </div>
 
@@ -18,7 +18,14 @@
                         </span>
                         by {{item.by}} 
                         <time-ago :datetime="new Date(item.time * 1000)" long />
-                        | {{item.descendants}} comments
+                        <span v-if="item.descendants" > |</span>
+                        <router-link
+                            v-if="item.descendants" 
+                            :to="{  name: 'CommentDetail', 
+                                    path: `/item/${item.id}`,
+                                    params: { id: `${item.id}` }}">
+                                     {{item.descendants}} comments
+                          </router-link>
                     </p>
                 </div>
             </div>

@@ -6,21 +6,27 @@
       :sections="sections"
     />
 
-    <main v-if="sections[currentIndex].data.length">
-      <Posts :posts="sections[currentIndex]" />
-    </main>
+    <router-view
+      :sections="sections"
+      :currentIndex="currentIndex"
+    ></router-view>
   </div>
 </template>
 
 <script>
 import Header from "./components/Header/Header";
-import Posts from "./components/Posts/Posts";
+
+const STORY = "https://hacker-news.firebaseio.com/v0/item/:id.json?print=pretty";
+const homeStories = "https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty";
+const newStories = "https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty"
+const ask = "https://hacker-news.firebaseio.com/v0/askstories.json?print=pretty";
+const show = "https://hacker-news.firebaseio.com/v0/showstories.json?print=pretty";
+const jobs = "https://hacker-news.firebaseio.com/v0/jobstories.json?print=pretty";
 
 export default {
   name: 'App',
   components: {
-    Header,
-    Posts
+    Header
   },
   data() {
     return {
@@ -56,16 +62,11 @@ export default {
           selected: false
         }
       ],
-      currentIndex: 0
+      currentIndex: 0,
+      searchInput: ""
     }
   },
   created(){
-    const homeStories = "https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty";
-    const newStories = "https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty"
-    const ask = "https://hacker-news.firebaseio.com/v0/askstories.json?print=pretty";
-    const show = "https://hacker-news.firebaseio.com/v0/showstories.json?print=pretty";
-    const jobs = "https://hacker-news.firebaseio.com/v0/jobstories.json?print=pretty";
-
     Promise.all([
       fetch(homeStories).then(res => res.ok && res.json() || Promise.reject(res)),
       fetch(newStories).then(res => res.ok && res.json() || Promise.reject(res)),
@@ -84,7 +85,6 @@ export default {
   },
   methods: {
     getData(ids) {
-      const STORY = "https://hacker-news.firebaseio.com/v0/item/:id.json?print=pretty"
       const data = Promise.all(
           ids.map(async (item) => {
               let url = STORY.replace(':id', item);
@@ -101,13 +101,11 @@ export default {
     getSelectedSection() {
       return this.sections.findIndex((section) => section.selected === true);
     },
-
   },
   watch: {
     currentIndex: {
       immediate: true,
       handler(newVal, oldVal) {
-        console.log(newVal, oldVal)
         if (oldVal) this.sections[oldVal].selected = false;
         if (newVal) this.sections[newVal].selected = true;
       }
@@ -121,7 +119,7 @@ export default {
     margin: 0;
     padding: 0;
     box-sizing: border-Box;
-    font-family: Roboto;
+    font-family: 'Roboto';
     list-style: none;
     text-decoration: none;
   }
@@ -130,11 +128,23 @@ export default {
     font-size: 62.5%;
   }
 
+  a {
+    color: inherit;
+  }
+
   #app {
     position: relative;
   }
 
   main {
     padding: 130px 1em 0px;
+    max-width: 1100px;
+    @media (min-width: 480px) {
+        width: 80%;
+        margin: 0 auto;
+    }
+    @media (min-width: 768px) {
+        padding-top: 110px;
+    }
   }
 </style>
