@@ -10,7 +10,7 @@
         * Home, New, Comments, Ask, Show, Jobs
 
 - [X] Post Container
-    - [ ] Post Items
+    - [X] Post Items
         * Title, Url, Points, Author, Created, Link to comments detail
 
 ### Page2: Comments Detail

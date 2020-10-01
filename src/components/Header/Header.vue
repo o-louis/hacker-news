@@ -12,13 +12,12 @@
 
         <!-- Nav -->
         <nav>
-            <ul class="menu">
-                <li class="menu__section selected">Home</li>
-                <li class="menu__section">New</li>
-                <li class="menu__section">Comments</li>
-                <li class="menu__section">Ask</li>
-                <li class="menu__section">Show</li>
-                <li class="menu__section">Jobs</li>
+            <ul class="menu" >
+                <li class="menu__section"
+                    v-for="(item, index) in sections"
+                    :key="index" @click="changeSection(index)">
+                    {{item.section}}
+                </li>
             </ul>
             <input type="text" placeholder="Search..." />
         </nav>
@@ -27,7 +26,12 @@
 
 <script>
 export default {
-    name: 'Header'
+    name: 'Header',
+    props: {
+        changeSection: Function,
+        currentIndex: Number,
+        sections: Array
+    }
 }
 </script>
 

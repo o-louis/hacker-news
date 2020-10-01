@@ -59,6 +59,7 @@ header {
             &__section {
                 font-size: 1.7em;
                 font-weight: 500;
+                text-transform: capitalize;
     
                 &.selected {
                     color: $hover-menu;
