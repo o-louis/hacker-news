@@ -1,6 +1,7 @@
 <template>
-    <main v-if="article && comments.length">
-        <Comments :article="article" :comments="comments" />
+    <main>
+        <Comments  v-if="article && comments.length" :article="article" :comments="comments" />
+        <div v-if="err" class="detail-not-found">Sorry item not found</div>
     </main>
 </template>
 
@@ -19,7 +20,8 @@ export default {
   data: function () {
       return {
           article: {},
-          comments: []
+          comments: [],
+          err: false
       }
   },
   created() {
@@ -28,7 +30,10 @@ export default {
         fetchData(response.kids).then(data => {
             this.comments = data;
         });
-    })
+    }).catch(err => {
+        this.err=true;
+        console.error(err);
+    });
   }
 }
 </script>

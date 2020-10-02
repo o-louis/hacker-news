@@ -4,6 +4,7 @@ const ASK = "https://hacker-news.firebaseio.com/v0/askstories.json?print=pretty"
 const SHOW = "https://hacker-news.firebaseio.com/v0/showstories.json?print=pretty";
 const JOBS = "https://hacker-news.firebaseio.com/v0/jobstories.json?print=pretty";
 const STORY = "https://hacker-news.firebaseio.com/v0/item/:id.json?print=pretty";
+const SEARCH = "https://hn.algolia.com/api/v1/search?query=:query&hitsPerPage=30"
 
 export const fetchSections = () => {
     const sections = Promise.all([
@@ -33,4 +34,13 @@ export const fetchId = async (id) => {
     const response = await fetch(url);
     const data = await response.json();
     return data;
+}
+
+export const fetchSearch = async (input) => {
+    const url = SEARCH.replace(':query', input)
+    const response = await fetch(url);
+    const data = await response.json();
+    const ids = data.hits.map(id => id.objectID);
+    const res = fetchData(ids)
+    return res;
 }

@@ -1,6 +1,6 @@
 <template>
-  <main v-if="sections[currentIndex].data.length">
-      <Posts :posts="sections[currentIndex]" />
+  <main v-if="sections[currentIndex].data.length || search">
+      <Posts :posts="search ? sections[5] : sections[currentIndex]" />
   </main>
 </template>
 
@@ -15,11 +15,12 @@ export default {
   },
   props: {
     sections: Array,
-    currentIndex: Number
+    currentIndex: Number,
+    search: Boolean
   },
   created(){
     fetchSections().then(data => {
-      for (let i = 0; i < this.sections.length; i++) {
+      for (let i = 0; i < this.sections.length-1; i++) {
         const ids = data[i].slice(0, 30);
         fetchData(ids).then(response => {
           this.sections[i].ids = data[i];

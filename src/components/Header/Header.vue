@@ -14,12 +14,12 @@
         <nav>
             <ul class="menu" >
                 <li :class="[index === currentIndex ? 'menu__section selected' : 'menu__section']"
-                    v-for="(item, index) in sections"
-                    :key="index" @click="changeSection(index)">
+                    v-for="(item, index) in newSections"
+                    :key="index" @click="changeSection(index)" >
                     <router-link to="/"> {{item.section}} </router-link>
                 </li>
             </ul>
-            <input type="text" placeholder="Search..." />
+            <input type="text" placeholder="Search..." v-model="input" />
         </nav>
     </header>
 </template>
@@ -30,8 +30,23 @@ export default {
     props: {
         changeSection: Function,
         currentIndex: Number,
-        sections: Array
+        sections: Array,
+        getSearchResult: Function
     },
+    data: function() {
+        return {
+            input: "",
+            newSections: []
+        }
+    },
+    watch: {
+        input(val) {
+            this.getSearchResult(val);
+        }
+    },
+    mounted: function() {
+        this.newSections = this.sections.filter((item, index) => index !== this.sections.length - 1 )
+    }
 }
 </script>
 
