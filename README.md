@@ -1,24 +1,10 @@
-# hacker-news
+# Hacker News Feed
 
-## Project setup
-```
-yarn install
-```
+This app is a clone of [Hacker News](https://news.ycombinator.com/) where the user can search and see articles.
+We can filter to only see articles about an specific topic
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
 
-### Compiles and minifies for production
-```
-yarn build
-```
+### API
 
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+* [HN Search Api ](https://hn.algolia.com/api)
+* [Hacker News Firebase](https://hackernews.api-docs.io/v0/overview/introduction)
