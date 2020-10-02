@@ -7,7 +7,7 @@
                 <div class="posts-container__row">
                     <a :href="item.url" target="__blank" class="posts-container__title">
                         {{item.title}}
-                        <span class="posts-container__link" v-if="item.url">({{getBaseUrlLink(item.url)}})</span>
+                        <span class="posts-container__link" v-if="item.url">({{link(item.url)}})</span>
                     </a>
                 </div>
 
@@ -21,7 +21,7 @@
                         <span v-if="item.descendants" > |</span>
                         <router-link
                             v-if="item.descendants" 
-                            :to="{  name: 'CommentDetail', 
+                            :to="{  name: 'Detail', 
                                     path: `/item/${item.id}`,
                                     params: { id: `${item.id}` }}">
                                      {{item.descendants}} comments
@@ -37,6 +37,7 @@
 
 <script>
     import TimeAgo from 'vue2-timeago';
+    import { filterLink } from "../../utils/filter";
 
     export default {
         name: 'Posts',
@@ -47,14 +48,8 @@
             posts: Object
         },
         methods: {
-            getBaseUrlLink(url) {
-                let baseUrl = url;
-                if (url) {
-                    baseUrl = url.split('/')[2];
-                    baseUrl = baseUrl.split('www.');
-                    baseUrl = baseUrl.slice(baseUrl.length-1)[0];
-                }
-                return baseUrl;
+            link(url) {
+                return filterLink(url)
             }
         }
     }

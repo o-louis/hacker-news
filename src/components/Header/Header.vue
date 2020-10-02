@@ -31,7 +31,7 @@ export default {
         changeSection: Function,
         currentIndex: Number,
         sections: Array
-    }
+    },
 }
 </script>
 

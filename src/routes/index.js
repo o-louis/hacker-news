@@ -1,10 +1,10 @@
-import Home from "../page/Home"
-import CommentDetail from "../page/CommentDetail"
+import Home from "../views/Home"
+import Detail from "../views/Detail"
 
 
 const routes = [
     { path: '/', name: "Home", component: Home},
-    { path: '/item/:id', name: "CommentDetail", component: CommentDetail, props: true }
+    { path: '/item/:id', name: "Detail", component: Detail, props: true }
   ]
   
   export default routes
